@@ -1,11 +1,11 @@
-function output = startCSD(stimulusIntensity, confidence)
+function output = startCSD(stimulusIntensity, confidenceJudgment)
 
     opts = optimset('fminsearch');
     opts.TolX = 1.e-4;
     opts.TolFun = 1.e-4;
     
     % Convert confidence to binary
-    binaryChoice = confidence >= 0.5;
+    binaryChoice = confidenceJudgment >= 0.5;
     
     % ==============================================
     % Step B:
@@ -30,7 +30,7 @@ function output = startCSD(stimulusIntensity, confidence)
     disp('-------------------------------------');
     disp('Confidence function with only k as the free parameter');
     disp('    scalar');
-    parametersConfidenceFn = psychometricFit1Parameter(stimulusIntensity,confidence,mu,slope);
+    parametersConfidenceFn = psychometricFit1Parameter(stimulusIntensity,confidenceJudgment,mu,slope);
     disp(parametersConfidenceFn);
 
     k = parametersConfidenceFn;
@@ -40,11 +40,11 @@ function output = startCSD(stimulusIntensity, confidence)
 
     % Preallocate for matrix to hold lower bin limit (col 1) and upper bin limit
     % (col 2)
-    binLimits = nan(length(confidence),2);
+    binLimits = nan(length(confidenceJudgment),2);
 
     % Fill in the bin
-    binLimits(:,1) = confidence(:,1) - 0.005;
-    binLimits(:,2) = confidence(:,1) + 0.005;
+    binLimits(:,1) = confidenceJudgment(:,1) - 0.005;
+    binLimits(:,2) = confidenceJudgment(:,1) + 0.005;
 
 
     % ==============================================
@@ -63,7 +63,7 @@ function output = startCSD(stimulusIntensity, confidence)
     % This gets us around the problem where some variables need to be fixed (the
     % original mu, sigma,and k) and others need to be changed to be optimized
     % (those in x0).
-    f = @(x) stepsFtoH(x,confidence,binLimits,stimulusIntensity);
+    f = @(x) stepsFtoH(x,confidenceJudgment,binLimits,stimulusIntensity);
 
 
     % ==============================================
