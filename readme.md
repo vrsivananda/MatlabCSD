@@ -39,6 +39,8 @@ This function outputs an array of 6 values in the form: `[PsyMu, PsySigma, intia
     * The value of k that is estimated by the CSD method.
   
 ### Examples
+
+Example where stimulus intensity is from -1 to 1, and confidence judgment is from 0 to 1:
 ```matlab
 stimulusIntensity = [-0.70; 0.70; -0.70; -0.38; 0.54; -0.54; 0.54; -0.46; -0.46; -0.46; 0.50; -0.50; 0.50; 0.48; 0.48; 0.48; -0.49; -0.49; -0.49; -0.48];
 
