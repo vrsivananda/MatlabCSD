@@ -6,15 +6,14 @@ This script is built from the methods outlined by Yi & Merfeld in their paper *[
 
 Make sure that you add the path to this folder such that your script can access it.
 
-The main function to use is `startCSD`.
-I.e. `startCSD(stimulusIntensity, confidenceJudgment);`
+The main function to use is `startCSD`: <br>
+`startCSD(stimulusIntensity, confidenceJudgment);`
 
 ### Inputs
 This function accepts two arguments:
 1. stimulusIntensity 
-   * This is an array of stimulus intensities (where each element is the intensity of a trial).
+   * This is a vector of stimulus intensities (where each element is the intensity of a trial).
     * Range is [-infinity, infinity]
-    * E.g. stimulusIntensity = [0.3, 0.5, -0.4, -0.1, 0.4];
 
 2. confidenceJudgment
     * This is an array of confidence judgments (where each element is the confidence judgment of a trial).
@@ -39,11 +38,13 @@ This function outputs an array of 6 values in the form: `[PsyMu, PsySigma, intia
 6. finalK 
     * The value of k that is estimated by the CSD method.
   
- ### Examples
+### Examples
 ```matlab
-stim = [0.3, 0.5, -1, 0.7, -0.2, -0.85];
-conf = [0.7, 0.9, 0.1, 0.95, 0.3, 0.03];
-[PsyMu, PsySigma, intialK, CSDMu, CSDSigma, finalK] = startCSD(stim, conf);
+stimulusIntensity = [-0.70;;  0.70; -0.70; -0.38;  0.54; -0.54;  0.54; -0.46; -0.46; -0.46;  0.50; -0.50;  0.50;  0.48;  0.48;  0.48; -0.49; -0.49; -0.49; -0.48];
+
+confidenceJudgment = [ 0.23; 0.93; 0.00; 0.58; 0.58; 0.06; 0.61; 0.26; 0.46; 0.53; 0.74; 0.34; 0.75; 0.87; 0.72; 0.18; 0.09; 0.02; 0.12; 0.28];
+
+[PsyMu, PsySigma, intialK, CSDMu, CSDSigma, finalK] = startCSD(stimulusIntensity, confidenceJudgment);
 ```
 
   
