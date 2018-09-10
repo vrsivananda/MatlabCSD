@@ -18,8 +18,8 @@ This function accepts two arguments:
     * This is a vector of confidence judgments (where each element is the confidence judgment of a trial).
     * Range is [0, 1]. If your confidence judgment is beyond this range, convert the confidence judgement to a scalar between 0 and 1.
     * The confidenceJudgment vector will be used to plot the confidence function.
-    * A copy of this confidenceJudgment vector will be converted to a binary vector where <0.5 will be 0 and >=0.5 will be 1. The binary vector will be used to plot the psychometric function. 
-    * This represents the y-axis of the psychometric function and confidence functions.
+    * A copy of this confidenceJudgment vector will be converted to a binary vector where <0.5 will be 0 and >=0.5 will be 1. The binary vector will be used to plot the conventional psychometric function. 
+    * This represents the y-axis of the conventional psychometric function and confidence functions.
   
 ### Outputs
 This function outputs an array of 6 values in the form: `[PsyMu, PsySigma, intialK, CSDMu, CSDSigma, finalK]`
